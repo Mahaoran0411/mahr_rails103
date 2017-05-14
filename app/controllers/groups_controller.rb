@@ -15,12 +15,21 @@ class GroupsController < ApplicationController
   end
 
   def create
+    @group = Group.new(group_params)
+    @group.save
+    redirect_to groups_path
   end
 
   def update
   end
 
   def destroy
+  end
+
+  private
+
+  def group_params
+    params.require(:group).permit(:title, :description)
   end
 
 end
